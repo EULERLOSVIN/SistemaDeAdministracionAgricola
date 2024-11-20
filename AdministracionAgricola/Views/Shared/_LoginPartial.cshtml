@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+ 
+<link href="~/css/LoginPartial.css" rel="stylesheet" />
+   
+<div class="cont-count-elemento">
+      
+    @if (SignInManager.IsSignedIn(User))
+    { 
+      <ul class="sesion-element">
+            <li class="quitar-punto">
+                <a class="quitar-subrayado" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name!</a>
+            </li>
+            <li class="quitar-punto boton-cerrar-sesion">
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="text-cerrar-sesiton">Cerrar sesion</button>
+                </form>
+            </li>
+
+      </ul>
+       
+    }
+    else
+    {
+        <ul>
+            <li>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        </ul>
+       
+    }
+</div>

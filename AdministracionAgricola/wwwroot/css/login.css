@@ -1,0 +1,69 @@
+﻿
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container{
+    background-image: url("/img/frutas.png"); /* Ruta relativa *frutas.png*/
+    background-size: cover;
+    margin: 0;
+    height: 100vh; /* Asegúrate de que el body tenga altura completa */
+    position: relative;
+    font-family: 'Numans', sans-serif;
+}
+
+
+.tarjet {
+    background: rgba(0,0,0,0.5);
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Asegúrate de establecer left también */
+    transform: translate(-50%, -50%); /*se mueve la mitad de lo que se e movido el contenedor tanto en el eje x e y*/
+    padding: 20px;
+    color:white;
+}
+
+.inputs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.icon-input {
+    display: flex;
+    height: 45px;
+}
+
+.boton-contenedor {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.boton-login{
+    border-radius: 5px 5px 5px 5px ;
+    width: 100px;
+    height: 40px;
+    background-color: #FFC107;
+    cursor: pointer;   
+    border: none;
+}
+.boton-login:hover{
+    background-color: white;
+}
+
+.icon {
+    display: flex;
+    background-color: #FFC107;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    padding: 12px;
+    border-radius: 5px 0 0 5px;
+    display: inline-block;
+    color:black;
+}

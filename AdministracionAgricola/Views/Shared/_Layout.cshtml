@@ -1,0 +1,128 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AdministracionAgricola</title>
+     
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdministracionAgricola.styles.css" asp-append-version="true" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/layout.css" rel="stylesheet" />
+</head>
+<body>
+        
+    <div class="grid-container">
+        <header class="header">
+            <partial name="_LoginPartial" />
+        </header>
+
+        <aside class="sidebar bg-light p-3 position-fixed top-0 start-0 vh-100" style="width: 250px; z-index: 100; overflow-y: auto;">
+            <ul class="nav flex-column">
+                <!-- Enlace principal -->
+                <li class="nav-item">
+                    <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Administracion Agricola</a>
+                </li>
+
+                <!-- Enlaces de navegación -->
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>
+
+                <!-- Enlaces con roles -->
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="GestionUser">Gestion de usuarios</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="RegistroPlantacion">Registro de plantaciones</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="RegistroProduccion">Registro de produccion</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="ControlInsumos">Control de insumos</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="ControlPerdidas">Control de perdidas</a>
+                    </li>
+                }
+                 
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="GestionRiego">Gestión del riego</a>
+                    </li>
+                }
+                 
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="MonitoreoClima">Monitoreo climático</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="GeneracionReportes">Generación de reportes</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Capataz"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Autenticacion" asp-action="Notificaciones">Alertas y notificaciones</a>
+                    </li>
+                }
+            </ul>
+        </aside>
+
+        <!-- Asegúrate de agregar espacio al lado para que el contenido principal no quede cubierto -->
+        <div class="content" style="margin-left: 250px; padding: 20px;">
+            <!-- Aquí va el contenido principal -->
+        </div>
+
+
+
+        <main class="main">
+
+            @RenderBody()
+            @await RenderSectionAsync("Scripts", required: false)
+
+        </main>
+
+    </div>
+
+   
+
+</body>
+
+
+</html>
+ 

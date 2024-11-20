@@ -1,0 +1,57 @@
+﻿@page
+@model LoginModel
+ 
+@{
+    ViewData["Title"] = "Inicio Seision";
+}
+  
+@{
+    Layout = null;
+}
+  
+<link href="~/css/login.css" rel="stylesheet" />
+
+<div class="login-container">
+    <div class="tarjet">
+        <h1>@ViewData["Title"]</h1>
+        <section>
+            <form id="account" method="post" class="inputs-group">
+                <hr />
+                <div asp-validation-summary="ModelOnly" role="alert"></div>
+                <div>
+                    <label asp-for="Input.Email">Email</label>
+                    <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email"></span>
+                </div>
+                <div>
+                    <label asp-for="Input.Password">Password</label>
+                    <input asp-for="Input.Password" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <span asp-validation-for="Input.Password"></span>
+                </div>
+                <div>
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div class="boton-contenedor">
+                    <button id="login-submit" type="submit" class="boton-login">Log in</button>
+                </div>
+                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

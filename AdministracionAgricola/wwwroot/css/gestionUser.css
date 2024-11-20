@@ -1,0 +1,140 @@
+﻿
+.container-add-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#0a8254;
+    width:230px;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    font-size:15px;
+}
+
+.boton-agregar-new {  
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-content: center;
+    justify-content:center;
+    border:none;
+    
+}
+
+.butt-fondo-verde {
+    background: rgb(8,98,91);
+    background: linear-gradient(0deg, rgba(8,98,91,1) 0%, rgba(27,130,92,1) 29%, rgba(54,176,114,1) 48%, rgba(21,142,102,1) 66%, rgba(9,102,97,1) 100%);
+    color: white;
+    width: 140px;
+    gap: 5px;
+    padding: 5px;
+    font-size:15px;
+    margin:5px;
+}
+.boton-add {
+    background: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    font-size: 15px;
+    color: black;
+
+}
+.tarjet-registrar{
+    border:2px solid black;
+    padding:10px;
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-size:15px;
+}
+
+.table th, .table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.table thead tr {
+    background-color: #f2f2f2;
+}
+
+tbody {
+    font-size: 15px;
+}
+
+.actions{
+    display:flex;
+    align-content:center;
+    justify-content:center;
+    gap:10px;
+}
+
+/*.tarjet-crearNew {
+    border: 2px solid black;
+    display: flex;
+    gap: 25px;
+    padding: 20px;
+    justify-content: space-between;*/ /* Alinea los elementos en los extremos */
+    /*border-radius:10px;
+}*/
+
+.gestionUser-container{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.table-head{
+    background:#0a3657;
+    color:white;
+}
+
+.tabla-lista-user{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.botones-add-nuevo{
+    display:flex;
+    gap:5px;
+
+}
+
+.butt-fondo-marino {
+    background: rgb(19,6,120);
+    background: linear-gradient(0deg, rgba(19,6,120,1) 0%, rgba(46,45,171,1) 19%, rgba(35,125,191,1) 47%, rgba(27,37,136,1) 78%, rgba(13,22,112,1) 100%);
+    color: white;
+    display: flex;
+    padding:5px;
+    width: 90px;
+    margin:5px;
+    font-size:15px;
+}
+
+.fondo-marino {
+    background: rgb(19,6,120);
+    background: linear-gradient(0deg, rgba(19,6,120,1) 0%, rgba(46,45,171,1) 19%, rgba(35,125,191,1) 47%, rgba(27,37,136,1) 78%, rgba(13,22,112,1) 100%);
+}
+.fondo-verde {
+    background: rgb(8,98,91);
+    background: linear-gradient(0deg, rgba(8,98,91,1) 0%, rgba(27,130,92,1) 29%, rgba(54,176,114,1) 48%, rgba(21,142,102,1) 66%, rgba(9,102,97,1) 100%);
+}
+
+.letra-blanca{
+    color:white;
+}
+
+.color-crema {
+    background: rgb(238,238,235);
+    background: linear-gradient(90deg, rgba(238,238,235,1) 0%, rgba(242,241,233,1) 50%, rgba(235,235,232,1) 100%);
+}
+.fondo-crema-2 {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,253,1) 31%, rgba(255,255,255,1) 51%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
+    border: 2px solid;
+}

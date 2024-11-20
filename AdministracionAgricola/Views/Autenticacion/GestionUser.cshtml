@@ -1,0 +1,176 @@
+﻿@model List<UsuarioDetalle>
+<!--Font Awesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+@using Microsoft.AspNetCore.Identity
+
+
+<link href="/css/gestionUser.css" rel="stylesheet" />
+
+@{
+    ViewData["Title"] = "GestionUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="gestionUser-container">
+    
+    <!-- Tabla de Usuarios -->
+    <div class="container mt-1">
+        <h2 class="mb-4 text-center">LISTA DE USUARIOS</h2>
+
+        <div class="tabla-lista-user">
+            <div class="botones-add-nuevo">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="boton-agregar-new butt-fondo-verde"><i class="fa-solid fa-plus boton-add"></i>Nuevo Usuario</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" class="boton-agregar-new butt-fondo-marino ">Nuevo Rol</button>
+
+            </div>
+           
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Apellido</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Rol</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.nombre</td>
+                            <td>@item.apellido</td>
+                            <td>@item.dni</td>
+                            <td>@item.email</td>
+                            <td>@item.rol</td>
+                            <td class="actions">
+                                <form asp-action="EditarUser" asp-controller="Autenticacion" method="get" class="d-inline-block">
+                                    <input type="hidden" name="nombre" value="@item.nombre" />
+                                    <input type="hidden" name="apellido" value="@item.apellido" />
+                                    <input type="hidden" name="dni" value="@item.dni" />
+                                    <input type="hidden" name="email" value="@item.email" />
+                                    <input type="hidden" name="rol" value="@item.rol" />
+                                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                                </form>
+
+                                <form asp-action="EliminarUser" asp-controller="Autenticacion" method="get" class="d-inline-block">
+                                    <input type="hidden" name="nombre" value="@item.nombre" />
+                                    <input type="hidden" name="apellido" value="@item.apellido" />
+                                    <input type="hidden" name="dni" value="@item.dni" />
+                                    <input type="hidden" name="email" value="@item.email" />
+                                    <input type="hidden" name="rol" value="@item.rol" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+   
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header fondo-verde letra-blanca">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">CREAR NUEVA CUENTA</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body color-crema">
+                    <!-- Div que representa la tarjeta ========================================================================================================-->
+                    <div class="tarjet-crearNew">
+                        <!-- Formulario para crear nuevo usuario -->
+                        <div class="container mt-2">
+                            <form asp-action="GestionUser" method="post" class="border p-4 rounded shadow-sm fondo-crema-2">
+                               
+                                <div class="form-group mb-3">
+                                    <label for="name" class="form-label">Nombre</label>
+                                    <input type="text" name="name" class="form-control" required placeholder="Nombre" />
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="apellido" class="form-label">Apellido</label>
+                                    <input type="text" name="apellido" class="form-control" required placeholder="Apellido" />
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="dni" class="form-label">DNI</label>
+                                    <input type="text" name="dni" class="form-control" required placeholder="DNI" />
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control" required placeholder="Correo Electrónico" />
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" name="password" class="form-control" required placeholder="Contraseña" />
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="role" class="form-label">Rol</label>
+                                    <select name="role" class="form-select" required>
+                                        <option value="" selected disabled>Selecciona un rol</option>
+                                        @foreach (var role in ViewBag.Roles as IEnumerable<IdentityRole>)
+                                        {
+                                            <option value="@role.Id">@role.Name</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-block fondo-verde letra-blanca">Crear Usuario</button>
+                            </form>
+                        </div>
+                    </div>
+
+                        
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header fondo-marino letra-blanca">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">CREAR NUEVO ROL</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body color-crema">
+                    <!-- Formulario para crear un nuevo rol ==========================-->
+                    <div class="container mt-5">
+                        <form asp-action="Rol" method="post" class="border p-5 rounded shadow-sm fondo-crema-2">
+                          
+
+                            <div class="form-group mb-3">
+                                <label for="name" class="form-label">Nombre del rol</label>
+                                <input type="text" name="name" class="form-control" required placeholder="Rol" />
+                            </div>
+
+                            <button type="submit" class="btn btn-block  fondo-marino letra-blanca">Crear Rol</button>
+                        </form>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<!-- Bootstrap Bundle JS (incluye Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
